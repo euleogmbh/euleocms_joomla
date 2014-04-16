@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="customer" type="text" cols="100" default="" label="CUSTOMER" description="EULEO_CUSTOMER" />
+		<param name="usercode" type="text" cols="100" default="" label="USERCODE" description="EULEO_USERCODE" />
+	</params>
+</config>

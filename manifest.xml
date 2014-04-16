@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>Euleo</name>
+	<license>Open Source License, GPL v2 based</license>
+	<author>Euleo GmbH</author>
+	<authorEmail>support@euleo.com</authorEmail>
+	<authorUrl>https://www.euleo.com</authorUrl>
+	<creationDate>March 2010</creationDate>
+	<copyright>2010, Euleo GmbH</copyright>
+	<version>0.1</version>
+	<description>
+		Translate your Website using Euleo.
+	</description>
+
+    <files folder="site">
+		<filename>euleo.php</filename>
+		<filename>index.html</filename>
+    </files>
+    <install>
+        <queries>
+            <query><![CDATA[CREATE TABLE IF NOT EXISTS `#__euleo_preview` (
+  `id` int(32) unsigned NOT NULL auto_increment,
+  `tablename` varchar(255) NOT NULL,
+  `original` text NOT NULL,
+  `translation` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;]]></query>
+
+            <query><![CDATA[INSERT INTO `#__euleo_preview` (`id`, `tablename`, `original`, `translation`) VALUES
+(1, 'categories', 'index.php?previewTranslation=true&option=com_euleo&categoryid={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_euleo&categoryid={id}&lang={lang}'),
+(2, 'contact_details', 'index.php?previewTranslation=true&option=com_contact&view=contact&id={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_contact&view=contact&id={id}&lang={lang}'),
+(3, 'content', 'index.php?previewTranslation=true&option=com_content&view=article&id={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_content&view=article&id={id}&lang={lang}'),
+(4, 'menu', 'index.php?previewTranslation=true&lang={lang}', 'index.php?previewTranslation=true&lang={lang}'),
+(5, 'newsfeeds', 'index.php?previewTranslation=true&option=com_newsfeeds&view=newsfeed&id={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_newsfeeds&view=newsfeed&id={id}&lang={lang}'),
+(6, 'polls', 'index.php?previewTranslation=true&option=com_poll&view=poll&id={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_poll&view=poll&id={id}&lang={lang}'),
+(7, 'sections', 'index.php?previewTranslation=true&option=com_content&view=section&layout=blog&id={id}&lang={lang}', 'index.php?previewTranslation=true&option=com_content&view=section&layout=blog&id={id}&lang={lang}'),
+(8, 'weblinks', 'index.php?previewTranslation=true&option=com_weblinks&lang={lang}', 'index.php?previewTranslation=true&option=com_weblinks&lang={lang}');]]></query>
+        </queries>
+    </install>
+    <uninstall>
+        <queries>
+            <query>DROP TABLE IF EXISTS `#__euleo_preview`</query>
+        </queries>
+    </uninstall>
+	<media />
+
+	<administration>
+		<menu img="components/com_euleo/assets/images/icon-16-logo.png">Euleo</menu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+		    <folder>classes</folder>
+		    <folder>controllers</folder>
+		    <folder>models</folder>
+		    <folder>views</folder>
+						
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>euleo.php</filename>
+	    </files>
+
+		<languages folder="admin/language">
+			<language tag="de-DE">de-DE.com_euleo.ini</language>
+			<language tag="en-GB">en-GB.com_euleo.ini</language>
+    	</languages>
+
+ 	</administration>
+
+	<params />
+</install>
